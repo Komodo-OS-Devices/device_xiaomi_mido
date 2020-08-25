@@ -154,12 +154,17 @@ service vendor.hvdcp_opti /vendor/bin/hvdcp_opti
     group system wakelock
 
 on charger
-    write /sys/devices/system/cpu/cpu2/online 0
-    write /sys/devices/system/cpu/cpu3/online 0
-    write /sys/module/lpm_levels/parameters/sleep_disabled 0
     start vendor.hvdcp_opti
     start vendor.power_off_alarm
+    start qcom-post-boot
     start thermal-engine
+
+    wait /dev/block/bootdevice/by-name/system
+    mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
+    write /sys/module/lpm_levels/parameters/sleep_disabled 0
+
+    setprop sys.usb.configfs 1
+    setprop persist.sys.usb.config mass_storage
 
 on boot
 # Update cpusets on boot and we want better load balancing
