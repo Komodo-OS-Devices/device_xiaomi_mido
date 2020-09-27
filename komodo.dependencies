@@ -1,0 +1,20 @@
+[
+ {
+     "remote": "github",
+     "repository"  : "Komodo-OS-Devices/vendor_xiaomi",
+     "target_path" : "vendor/xiaomi",
+     "branch"      : "ten"
+ },
+ {
+     "remote": "github",
+     "repository"  : "Nicklas373/kernel_xiaomi_msm8953-4.9",
+     "target_path" : "kernel/xiaomi/mido",
+     "branch"      : "lineage-17.1"
+ },
+ {
+     "remote": "github",
+     "repository"  : "kdrag0n/proton-clang",
+     "target_path" : "prebuilts/clang/host/linux-x86/clang-12.0",
+     "branch"      : "master"
+ }
+]
